@@ -2581,7 +2581,7 @@ xfreerdp /f /u:user /p:0624 /v:192.168.0.250   WinTar1
 
 https://www.cloud4y.ru/blog/linux-utilities-remote-server/</rich_text>
   </node>
-  <node name="Git" unique_id="36" prog_lang="plain-text" tags="git" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="182" is_bold="0" foreground="#f6d32d" ts_creation="1753693123" ts_lastsave="1761927066">
+  <node name="Git" unique_id="36" prog_lang="custom-colors" tags="git" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="182" is_bold="0" foreground="#f6d32d" ts_creation="1753693123" ts_lastsave="1761931309">
     <rich_text>Перед началом разработки новой фичи:
 1 clone (копируем себе весь проект, создаём локальный репозиторий)
 	или git init  Инициализируйте git репозиторий
@@ -2590,6 +2590,9 @@ https://www.cloud4y.ru/blog/linux-utilities-remote-server/</rich_text>
 4 merge-request запрос на добавление изменений в главную ветку
 5 review анализ изменений. Нужно подтверждение, что можно вливать в master
 6 merge
+
+git fetch Только просто ПРОВЕРИТЬ ИЗМЕНЕНИЯ (посмотреть что есть на GitHub)	"Что нового на GitHub?"
+git pull	ПОЛУЧИТЬ И ПРИМЕНИТЬ ИЗМЕНЕНИЯ
 
 git status -suno	s-коротко; uno - не показывать неотслеживаемые файлы
 git log --oneline
@@ -2610,20 +2613,26 @@ git commit -m "Добавлены новые заметки" СОХРАНИТЬ 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-git fetch Только просто ПРОВЕРИТЬ ИЗМЕНЕНИЯ (посмотреть что есть на GitHub)	"Что нового на GitHub?"
-git pull	ПОЛУЧИТЬ И ПРИМЕНИТЬ ИЗМЕНЕНИЯ
-
+git branch			убедиться что находитесь в ветке main
 git branch -a			какие ветки существуют
 git branch -vv		какие ветки что отслеживают
+
 git branch -M main	 Переименуйте ветку в main
+	после git push -u origin main:	[Локальная ветка main] --связана c GiHub--&gt; [origin/main]
+		-u - это "сделай и запомни на будущее"! После первого использования можно забыть про origin main и использовать просто git push
+git push origin --delete master	</rich_text>
+    <rich_text underline="single">Но перед этим на GitHib выставить по умолчанию main как Default</rich_text>
+    <rich_text>
+
+git remote show origin		покажет все связи между локальными и удаленными ветками.
+
 git merge имя_ветки	Объединяет изменения из разных веток. Когда используется: После git pull, если были конфликты
 
 git remote add origin https://github.com/aika052/CherryTree.git 	Добавьте удаленный репозиторий
 
 git clone git@gitlab.com:aika052/CherryTree.git	Клонирование
 
-После git push -u origin main:	[Локальная ветка main] --связана c GiHub--&gt; [origin/main]
--u - это "сделай и запомни на будущее"! После первого использования можно забыть про origin main и использовать просто git push
+
 
 Dev Stage Prod
 GitFlow: ветки фича, релиз(для багфиксов), мастер(девелоп), прод.
