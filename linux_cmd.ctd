@@ -2581,9 +2581,10 @@ xfreerdp /f /u:user /p:0624 /v:192.168.0.250   WinTar1
 
 https://www.cloud4y.ru/blog/linux-utilities-remote-server/</rich_text>
   </node>
-  <node name="Git" unique_id="36" prog_lang="plain-text" tags="git" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="182" is_bold="0" foreground="#f6d32d" ts_creation="1753693123" ts_lastsave="1761832418">
+  <node name="Git" unique_id="36" prog_lang="plain-text" tags="git" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="182" is_bold="0" foreground="#f6d32d" ts_creation="1753693123" ts_lastsave="1761927066">
     <rich_text>Перед началом разработки новой фичи:
 1 clone (копируем себе весь проект, создаём локальный репозиторий)
+	или git init  Инициализируйте git репозиторий
 2 branch создаём новую ветку под новый функционал
 3 commit - хеш-код
 4 merge-request запрос на добавление изменений в главную ветку
@@ -2595,20 +2596,43 @@ git log --oneline
 git remote -v		Проверить удаленный репозиторий
 git config --list	Проверить настройки
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+git add notes.ctb ПОДГОТОВИТЬ К ОТПРАВКЕ. "Подготовь эти файлы к сохранению"
+git commit -m "Добавлены новые заметки" СОХРАНИТЬ В ЛОКАЛЬНУЮ ИСТОРИЮ. "Сохрани текущее состояние в историю"
 
-У commita может быть 3 состояния:
- - modified внёс изменения, они локальные
- - staged есть локальные изменения, но они не закоммичены. Сделал изменения и хочу что бы они остались нетронуты(удобно для отката). Далее все изменения будут делаться в состоянии modified.
+Состояния commita:
+Рабочая папка  --add--&gt;  Staging Area  --commit--&gt;  Локальный репозиторий  --push--&gt;  Удаленный репозиторий
+   (modified)    (staged)    (committed)    (local)          (pushed)        (remote)
+   
+ - modified внёс изменения, они локальные. git status показывает красным
+ - staged(после git add) есть локальные изменения, но они не закоммичены. Сделал изменения и хочу что бы они остались нетронуты(удобно для отката). Далее все изменения будут делаться в состоянии modified.
  - commited добавил изменения в свою локальную версию
 
- Dev Stage Prod
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+git fetch Только просто ПРОВЕРИТЬ ИЗМЕНЕНИЯ (посмотреть что есть на GitHub)	"Что нового на GitHub?"
+git pull	ПОЛУЧИТЬ И ПРИМЕНИТЬ ИЗМЕНЕНИЯ
+
+git branch -a			какие ветки существуют
+git branch -vv		какие ветки что отслеживают
+git branch -M main	 Переименуйте ветку в main
+git merge имя_ветки	Объединяет изменения из разных веток. Когда используется: После git pull, если были конфликты
+
+git remote add origin https://github.com/aika052/CherryTree.git 	Добавьте удаленный репозиторий
+
+git clone git@gitlab.com:aika052/CherryTree.git	Клонирование
+
+После git push -u origin main:	[Локальная ветка main] --связана c GiHub--&gt; [origin/main]
+-u - это "сделай и запомни на будущее"! После первого использования можно забыть про origin main и использовать просто git push
+
+Dev Stage Prod
 GitFlow: ветки фича, релиз(для багфиксов), мастер(девелоп), прод.
 CI - изменения от разработчиков автоматич. вливать в основную ветку. Рзработчик занят только написанием кода.
 Continius Delivery - автоматич. доставка кода во все окружения кроме продакшн.
 Continius Deployment - 100% автоматизация включая продакшн. Jenkins отслеживает состояние GitHub и т.п.
 </rich_text>
   </node>
-  <node name="Ansible" unique_id="51" prog_lang="custom-colors" tags="ans" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="134" is_bold="0" foreground="#613583" ts_creation="1761814252" ts_lastsave="1761814263">
+  <node name="Ansible" unique_id="51" prog_lang="custom-colors" tags="ans" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="134" is_bold="0" foreground="#ffffff" ts_creation="1761814252" ts_lastsave="1761847863">
     <rich_text>UI(графический интерфейс) AnsibleTower(RadHat платная) / AWX(бесплатная)
 galaxy.ansible.com
 docs.ansible.com/ansible/latest/collections
